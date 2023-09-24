@@ -11,6 +11,7 @@ import {
 } from '../components/form'
 
 import useLocation from '../hooks/useLocation'
+import listingsApi from '../api/listings'
 
 import Screen from '../components/Screen'
 import { PickerItemComponent } from '../components/itempicker'
@@ -83,6 +84,13 @@ const categories = [
 
 function ListingEditScreen() {
   const { location } = useLocation()
+
+  const handleSubmit = async (listing) => {
+    const result = await listingsApi.addListing({ ...listing, location })
+    if (!result.ok) return alert('Could not save the listing.', result.ok)
+    alert('Success')
+  }
+
   return (
     <Screen style={styles.container}>
       <GestureHandlerRootView>
@@ -94,7 +102,7 @@ function ListingEditScreen() {
             category: null,
             images: [],
           }}
-          onSubmit={(values) => console.log(values, location)}
+          onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
           <FormImagePicker name='images' />

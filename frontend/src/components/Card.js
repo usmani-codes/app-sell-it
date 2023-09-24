@@ -4,12 +4,12 @@ import { useNavigation } from '@react-navigation/native'
 import AppText from './AppText'
 import colors from '../config/colors'
 
-const Card = ({ title, subTitle, image, onPress }) => {
+const Card = ({ title, subTitle, imageUrl, onPress }) => {
   const navigation = useNavigation()
 
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
-      <Image source={image} style={styles.image} />
+      <Image source={{ uri: imageUrl }} style={styles.image} />
       <View style={styles.textContainer}>
         <AppText style={styles.title}>{title}</AppText>
         <AppText style={styles.subTitle}>{subTitle}</AppText>

@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 
 import navigationTheme from './src/navigation/navigationTheme'
 import AppNavigator from './src/navigation/AppNavigator'
+import ActivityIndicator from './src/components/ActivityIndicator'
 
 export default function App() {
   return (
